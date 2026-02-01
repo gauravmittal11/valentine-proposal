@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #fce4ec; /* Light pink background */
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevents scrollbars when button moves */
+        }
+
+        h1 {
+            color: #d81b60;
+            font-size: 3rem;
+        }
+
+        .gif-container img {
+            width: 200px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-container {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 1.5rem;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 10px;
+            transition: 0.2s;
+        }
+
+        #yesBtn {
+            background-color: #e91e63;
+            color: white;
+            font-weight: bold;
+        }
+
+        #noBtn {
+            background-color: white;
+            color: #e91e63;
+            border: 2px solid #e91e63;
+            position: absolute; /* Allows the button to move freely */
+        }
+
+    </style>
+</head>
+<body>
+
+    <div id="main-content">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExbmM2Z3g4OGF6bXh4Z3Z4ZmE2ZnZ4ZmE2ZnZ4ZmE2ZnZ4ZmE2ZnZ4ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/cLS1cfxvGOPVpf9g3y/giphy.gif" alt="Cute Cat">
+        </div>
+
+        <h1>Will you be my Valentine?</h1>
+
+        <div class="btn-container">
+            <button id="yesBtn" onclick="acceptProposal()">Yes</button>
+            <button id="noBtn" onmouseover="moveButton()" onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const mainContent = document.getElementById('main-content');
+
+        // Function to move the 'No' button
+        function moveButton() {
+            // Get the window size
+            const maxWidth = window.innerWidth - noBtn.offsetWidth;
+            const maxHeight = window.innerHeight - noBtn.offsetHeight;
+
+            // Calculate random position
+            const randomX = Math.floor(Math.random() * maxWidth);
+            const randomY = Math.floor(Math.random() * maxHeight);
+
+            // Apply new position
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        // Function for the 'Yes' button
+        function acceptProposal() {
+            mainContent.innerHTML = `
+                <div class="gif-container">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z4ZmE2ZnZ4ZmE2ZnZ4ZmE2ZnZ4ZmE2ZnZ4ZmE2ZnZ4ZmE2ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/T86i6yDyOYz7J6dPhf/giphy.gif" alt="Happy Cat" style="width: 300px;">
+                </div>
+                <h1>YAY! 💖 See you on the 14th!</h1>
+            `;
+            
+            // Optional: Add confetti effect logic here if you want to get advanced!
+        }
+    </script>
+
+</body>
+</html>
